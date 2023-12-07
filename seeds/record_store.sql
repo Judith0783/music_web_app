@@ -28,3 +28,6 @@ CREATE TABLE artists (
 -- Finally, we add any records that are needed for the tests to run
 INSERT INTO albums (title, release_year, artist_id) VALUES ('The Cold Nose', 2008, 1); -- Department of Eagles artist
 INSERT INTO artists (artist_name, genre) VALUES ('Wild Nothing', 'Indie');
+INSERT INTO artists (artist_name, genre) VALUES ('Pixies', 'Pop');
+INSERT INTO artists (artist_name, genre) VALUES ('ABBA', 'Rock');
+INSERT INTO artists (artist_name, genre) VALUES ('Nina Simone', 'Rock');

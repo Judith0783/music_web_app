@@ -25,4 +25,3 @@ def test_create(db_connection):
          Album(1, "The Cold Nose", 2008, 1),
          Album(2, "Test Title", 1000, 2)
      ]
-     

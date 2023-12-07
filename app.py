@@ -57,8 +57,8 @@ apply_example_routes(app)
 def get_artists():
     connection = get_flask_database_connection(app)
     repository = ArtistRepository(connection)
-    return "\n".join(
-        f"{artist}" for artist in repository.all()     
+    return ", ".join(
+        f"{artist.artist_name}" for artist in repository.all()     
     )
 
 # These lines start the server if you run this file directly

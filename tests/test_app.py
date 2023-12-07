@@ -91,7 +91,10 @@ Album(1, The Cold Nose, 2008, 1)
 
 # ======================================================#
 #GET Artists Test - Return List of Artists
-def test_get_artists(web_client):
-    response = web_client.get('/artists')
+
+def test_get_artists(db_connection, web_client):
+    response = web_client.get("/artists")
     assert response.status_code == 200
-    assert response.data.decode('utf-8') == 'Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing'
+    assert response.data.decode('utf-8') == 'Wild Nothing, Pixies, ABBA, Nina Simone'
+        
+    
