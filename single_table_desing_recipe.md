@@ -17,8 +17,8 @@ genre=Pop
 GET /artists
 
 # with body paramater:
-name=Beyonce
-genre=Pop
+name=Wild Nothing
+genre=Indie
 
 # Expected response (200 OK)
 Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing
@@ -69,7 +69,7 @@ genre: text
 
 #       4. Write the SQL
 -- EXAMPLE
--- file: artists_table.sql
+-- file: record_store.sql
 
 -- Replace the table name, columm names and types.
 
@@ -81,3 +81,4 @@ CREATE TABLE artists (
 #       5. Create the table
 
 psql -h 127.0.0.1 database_name < albums_table.sql
+psql -h 127.0.0.1 music_web_app < record_store.sql
