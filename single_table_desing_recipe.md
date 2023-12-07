@@ -1,19 +1,29 @@
 # Single Table Design Recipe
 
-Test-dirve a route 'POST/albums' to create a new album:
+Test-dirve a route 'POST/artists' to create a new artist:
 
 # Request:
-POST /albums
+POST /artists
 
 # with body paramater:
-title=Voyage
-release_year=2022
-artist_id=2itle
+name=Beyonce
+genre=Pop
 
 # Expected response (200 OK)
 (No content)
 
-Your test should assert that the new album is present in the list of records returned by GET /albums.
+
+# Request:
+GET /artists
+
+# with body paramater:
+name=Beyonce
+genre=Pop
+
+# Expected response (200 OK)
+Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing
+
+Your test should assert that the new artist is present in the list of artists returned by GET /artists.
 
 
 
@@ -24,11 +34,9 @@ Your test should assert that the new album is present in the list of records ret
 
 Nouns:
 
-album
-title
-release year
-artist
-id
+name
+genre
+
 
 #       2. Infer the Table Name and Columns
 
@@ -36,12 +44,12 @@ Put the different nouns in this table. Replace the example with your own nouns.
 
 |Record                 |Properties
 |-----------------------|-------------------------
-|album	                |id, title, release year, artist_id
+|artist	                |name, genre
 
 
-Name of the table (always plural): albums
+Name of the table (always plural): artists
 
-Column names: title, release_year, artist_id, id
+Column names: name, genre
 
 #       3. Decide the column types
 
@@ -54,22 +62,21 @@ Remember to always have the primary key id as a first column. Its type will alwa
 # EXAMPLE:
 
 id: SERIAL
-title: text
-release_year: int
-artist_id: int
+name: text
+genre: text
+
 
 
 #       4. Write the SQL
 -- EXAMPLE
--- file: albums_table.sql
+-- file: artists_table.sql
 
 -- Replace the table name, columm names and types.
 
-CREATE TABLE albums (
+CREATE TABLE artists (
   id SERIAL PRIMARY KEY,
-  title text,
-  release_year int,
-  artist_id int
+  name text,
+  genre text
 );
 #       5. Create the table
 
