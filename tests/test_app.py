@@ -98,3 +98,7 @@ def test_get_artists(db_connection, web_client):
     assert response.data.decode('utf-8') == 'Wild Nothing, Pixies, ABBA, Nina Simone'
         
     
+def test_post_artist(web_client):
+    response = web_client.post('/artist', data={'artist_name': 'Wild Nothing', 'genre': 'Indie'})
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing'

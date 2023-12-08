@@ -4,6 +4,7 @@ from lib.album import Album
 from flask import Flask, request
 from lib.album_repository import AlbumRepository
 from lib.artist_repository import ArtistRepository
+from lib.artist import Artist
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -34,8 +35,7 @@ def post_albums():
         request.form['artist_id'])
     repository.create(album)
     return '', 200
-
-
+  
 @app.route('/albums')
 def get_albums():
     connection = get_flask_database_connection(app)
@@ -43,6 +43,22 @@ def get_albums():
     return "\n".join(
         f"{album}" for album in repository.all()     
     )
+
+@app.route('/artist', methods=['POST'])
+def post_artists():
+    if 'artist_name' not in request.form or 'genre' not in request.form:  #not in request.form or 'artist_id' not in request.form:
+        return "You need to submit a artist_name and genre", 400
+    
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    artist = Artist(
+        None,
+        request.form['artist_name'],
+        request.form['genre'])
+    print(artist)
+
+    repository.create(artist)
+    return '', 200
 
 
 # This imports some more example routes for you to see how they work
